@@ -87,7 +87,7 @@
 
 #pragma Public APIs
 
-- (id)addCustomEnvironmentInformation:(id)args
+- (void)addCustomEnvironmentInformation:(id)args
 {
   ENSURE_UI_THREAD(addCustomEnvironmentInformation, args);
   
@@ -97,10 +97,9 @@
   ENSURE_STRING(key);
   ENSURE_STRING(info);
   [TestFlight addCustomEnvironmentInformation:info forKey:key];
-  return nil;
 }
 
-- (id)setOptions:(id)args
+- (void)setOptions:(id)args
 {
   ENSURE_UI_THREAD(setOptions, args);
   
@@ -108,10 +107,9 @@
   id options = [args objectAtIndex:0];
   ENSURE_DICT(options);
   [TestFlight setOptions:options];
-  return nil;
 }
 
-- (id)takeOff:(id)args
+- (void)takeOff:(id)args
 {
   ENSURE_UI_THREAD(takeOff, args);
   
@@ -119,18 +117,16 @@
   id teamToken = [args objectAtIndex:0];
   ENSURE_STRING(teamToken);
   [TestFlight takeOff:teamToken];
-  return nil;
 }
 
-- (id)openFeedbackView:(id)args
+- (void)openFeedbackView:(id)args
 {
   ENSURE_UI_THREAD(openFeedbackView, args);
   
   [TestFlight openFeedbackView];
-  return nil;
 }
 
-- (id)passCheckpoint:(id)args
+- (void)passCheckpoint:(id)args
 {
   ENSURE_UI_THREAD(passCheckpoint, args);
   
@@ -138,7 +134,6 @@
   id checkPoint = [args objectAtIndex:0];
   ENSURE_STRING(checkPoint);
   [TestFlight passCheckpoint:checkPoint];
-  return nil;
 }
 
 @end
