@@ -21,14 +21,20 @@ testflight.takeOff("[TEAM TOKEN]");
 Ti.API.debug("Start Logging");
 
 Ti.API.info("passCheckPoint");
-testflight.passCheckPoint("checkpoint1");
+testflight.passCheckpoint("checkpoint1");
 
 Ti.API.debug("addCustomEnvironmentInformation");
 testflight.addCustomEnvironmentInformation("key", "value");
 
-testflight.passCheckPoint("checkpoint2");
+testflight.passCheckpoint("checkpoint2");
 
 Ti.API.debug("OpenFeedbackView");
 testflight.openFeedbackView();
+
+testflight.trace("trace");
+testflight.debug("debug");
+testflight.info("info");
+testflight.warn("warn");
+testflight.error("error");
 
 Ti.API.debug("End");

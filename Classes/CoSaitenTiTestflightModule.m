@@ -33,6 +33,8 @@
 	// this method is called when the module is first loaded
 	// you *must* call the superclass
 	[super startup];
+
+	[TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
 	
 	NSLog(@"[INFO] %@ loaded",self);
 }
@@ -134,6 +136,46 @@
   id checkPoint = [args objectAtIndex:0];
   ENSURE_STRING(checkPoint);
   [TestFlight passCheckpoint:checkPoint];
+}
+
+- (void)trace:(id)args
+{
+  ENSURE_UI_THREAD(trace, args);
+  ENSURE_SINGLE_ARG(args, NSString);
+  
+  TFLog(@"[TRACE]%@", args);
+}
+
+- (void)debug:(id)args
+{
+  ENSURE_UI_THREAD(debug, args);
+  ENSURE_SINGLE_ARG(args, NSString);
+  
+  TFLog(@"[DEBUG]%@", args);
+}
+
+- (void)info:(id)args
+{
+  ENSURE_UI_THREAD(info, args);
+  ENSURE_SINGLE_ARG(args, NSString);
+  
+  TFLog(@"[INFO]%@", args);
+}
+
+- (void)warn:(id)args
+{
+  ENSURE_UI_THREAD(warn, args);
+  ENSURE_SINGLE_ARG(args, NSString);
+  
+  TFLog(@"[WARN]%@", args);
+}
+
+- (void)error:(id)args
+{
+  ENSURE_UI_THREAD(error, args);
+  ENSURE_SINGLE_ARG(args, NSString);
+  
+  TFLog(@"[ERROR]%@", args);
 }
 
 @end
